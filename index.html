@@ -1,1 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+<title>RP THE BRAND | Cricket Trading</title>
+
+<meta name="theme-color" content="#080909">
+<meta name="description" content="RP The Brand - Cricket Trading & Match Analysis Community.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--gold:#e9c777;
+--gold2:#a77c32;
+--dark:#080909;
+--white:#f6f1e6;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+}
+
+body{
+background:var(--dark);
+font-family:'Montserrat',sans-serif;
+color:var(--white);
+-webkit-font-smoothing:antialiased;
+}
+
+/* BACKGROUND */
+
+.background{
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:-1;
+
+background:
+radial-gradient(ellipse at 50% 25%,rgba(169,124,50,.16),transparent 48%),
+radial-gradient(ellipse at 50% 100%,rgba(169,124,50,.08),transparent 55%),
+#080909;
+}
+
+.background:after{
+content:"";
+position:absolute;
+inset:0;
+opacity:.16;
+
+background-image:
+linear-gradient(rgba(233,199,119,.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(233,199,119,.08) 1px,transparent 1px);
+
+background-size:42px 42px;
+
+mask-image:linear-gradient(to bottom,transparent,#000,transparent);
+}
+
+/* FLOATING PARTICLES */
+
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:var(--gold);
+border-radius:50%;
+box-shadow:0 0 12px var(--gold);
+opacity:0;
+animation:float 9s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(105vh);opacity:0}
+15%{opacity:.7}
+85%{opacity:.5}
+100%{transform:translateY(-10vh);opacity:0}
+}
+
+/* MAIN LAYOUT */
+
+.page{
+height:100%;
+height:100dvh;
+width:100%;
+max-width:480px;
+margin:auto;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+padding:22px 23px;
+padding-top:max(22px,env(safe-area-inset-top));
+padding-bottom:max(22px,env(safe-area-inset-bottom));
+
+position:relative;
+isolation:isolate;
+}
+
+/* TOP BRAND */
+
+.top-brand{
+position:absolute;
+top:28px;
+left:0;
+right:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:9px;
+
+font-size:9px;
+font-weight:800;
+letter-spacing:3px;
+color:var(--gold);
+}
+
+.top-brand:before,
+.top-brand:after{
+content:"";
+height:1px;
+width:27px;
+background:linear-gradient(90deg,transparent,var(--gold2));
+}
+
+.top-brand:after{
+transform:rotate(180deg);
+}
+
+/* LOGO AREA */
+
+.logo-section{
+position:relative;
+width:185px;
+height:185px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+margin-bottom:22px;
+}
+
+.orbit{
+position:absolute;
+border:1px solid rgba(233,199,119,.22);
+border-radius:50%;
+}
+
+.orbit.one{
+width:174px;
+height:174px;
+animation:rotate 18s linear infinite;
+border-top-color:var(--gold);
+border-bottom-color:var(--gold2);
+}
+
+.orbit.two{
+width:151px;
+height:151px;
+border-style:dashed;
+opacity:.35;
+animation:rotate 25s linear infinite reverse;
+}
+
+.logo-glow{
+position:absolute;
+width:130px;
+height:130px;
+border-radius:50%;
+background:rgba(233,199,119,.13);
+filter:blur(27px);
+}
+
+.logo-frame{
+width:124px;
+height:124px;
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:5px;
+
+background:linear-gradient(135deg,#f9e2a3,#7a5421,#f0cb76);
+
+box-shadow:
+0 0 35px rgba(233,199,119,.15),
+inset 0 0 15px rgba(0,0,0,.5);
+
+z-index:2;
+}
+
+.logo-frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+background:#111;
+border:3px solid #101010;
+}
+
+@keyframes rotate{
+to{transform:rotate(360deg)}
+}
+
+/* LIVE BADGE */
+
+.live-badge{
+display:flex;
+align-items:center;
+gap:7px;
+
+padding:8px 13px;
+border:1px solid rgba(233,199,119,.25);
+background:rgba(233,199,119,.055);
+border-radius:30px;
+
+font-size:9px;
+font-weight:800;
+letter-spacing:1.5px;
+color:var(--gold);
+
+margin-bottom:17px;
+}
+
+.live-dot{
+width:6px;
+height:6px;
+border-radius:50%;
+background:#60e69a;
+box-shadow:0 0 9px #60e69a;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+50%{opacity:.35;transform:scale(.7)}
+}
+
+/* HEADING */
+
+.heading{
+text-align:center;
+}
+
+.heading h1{
+font-family:'Cinzel',serif;
+font-size:clamp(30px,8.7vw,43px);
+font-weight:900;
+line-height:1.13;
+letter-spacing:-1px;
+
+background:linear-gradient(
+110deg,
+#aa7c33 0%,
+#fff1bc 35%,
+#d4a64d 65%,
+#fff0bb 85%,
+#a77c32 100%
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+
+filter:drop-shadow(0 3px 15px rgba(233,199,119,.13));
+}
+
+.heading h1 span{
+display:block;
+font-size:clamp(35px,10vw,49px);
+letter-spacing:1px;
+}
+
+.divider{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:11px;
+margin:17px auto;
+}
+
+.divider:before,
+.divider:after{
+content:"";
+height:1px;
+width:51px;
+background:linear-gradient(90deg,transparent,var(--gold2));
+}
+
+.divider:after{
+transform:rotate(180deg);
+}
+
+.diamond{
+width:6px;
+height:6px;
+background:var(--gold);
+transform:rotate(45deg);
+}
+
+.subtitle{
+font-size:10px;
+font-weight:700;
+letter-spacing:2.1px;
+color:#c9c2b2;
+text-align:center;
+line-height:1.8;
+}
+
+/* FEATURES */
+
+.features{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+
+margin-top:23px;
+margin-bottom:26px;
+width:100%;
+}
+
+.feature{
+flex:1;
+text-align:center;
+
+border:1px solid rgba(233,199,119,.17);
+background:linear-gradient(145deg,rgba(233,199,119,.065),rgba(233,199,119,.015));
+
+padding:12px 3px;
+border-radius:8px;
+}
+
+.feature-icon{
+color:var(--gold);
+font-size:17px;
+margin-bottom:7px;
+}
+
+.feature-text{
+font-size:8px;
+font-weight:800;
+letter-spacing:.6px;
+color:#e1d5bd;
+}
+
+/* CTA */
+
+.cta-area{
+width:100%;
+text-align:center;
+}
+
+.cta-label{
+font-size:9px;
+letter-spacing:1.5px;
+font-weight:600;
+color:#a9a395;
+margin-bottom:12px;
+}
+
+.join-btn{
+position:relative;
+width:100%;
+min-height:58px;
+
+border:none;
+border-radius:7px;
+
+background:linear-gradient(
+110deg,
+#b48639,
+#f9df9a,
+#d5a64c,
+#f9df9a,
+#b48639
+);
+
+background-size:200% 100%;
+
+font-family:'Montserrat',sans-serif;
+font-size:13px;
+font-weight:900;
+letter-spacing:1.1px;
+
+color:#171207;
+cursor:pointer;
+
+box-shadow:
+0 6px 25px rgba(212,166,76,.22),
+inset 0 1px 0 rgba(255,255,255,.5);
+
+animation:goldShine 5s linear infinite;
+transition:transform .2s;
+}
+
+.join-btn:active{
+transform:scale(.97);
+}
+
+@keyframes goldShine{
+0%{background-position:100% 0}
+100%{background-position:-100% 0}
+}
+
+.cta-note{
+font-size:9px;
+color:#827d72;
+margin-top:12px;
+letter-spacing:.5px;
+}
+
+/* FOOTER */
+
+.footer{
+position:absolute;
+bottom:18px;
+
+font-size:8px;
+color:#777266;
+letter-spacing:1.3px;
+text-align:center;
+}
+
+.footer span{
+color:var(--gold2);
+}
+
+/* SMALL MOBILE */
+
+@media(max-height:740px){
+
+.top-brand{top:17px}
+
+.logo-section{
+width:145px;
+height:145px;
+margin-bottom:12px;
+}
+
+.orbit.one{width:140px;height:140px}
+.orbit.two{width:122px;height:122px}
+
+.logo-frame{width:104px;height:104px}
+
+.live-badge{margin-bottom:12px}
+
+.heading h1{font-size:30px}
+.heading h1 span{font-size:36px}
+
+.divider{margin:12px auto}
+
+.features{
+margin-top:16px;
+margin-bottom:17px;
+}
+
+.feature{padding:9px 3px}
+
+.footer{bottom:9px}
+
+}
+
+@media(max-height:620px){
+
+.top-brand,.footer{display:none}
+
+.logo-section{
+width:112px;
+height:112px;
+margin-bottom:9px;
+}
+
+.orbit.one{width:110px;height:110px}
+.orbit.two{width:96px;height:96px}
+
+.logo-frame{width:84px;height:84px}
+
+.heading h1{font-size:26px}
+.heading h1 span{font-size:31px}
+
+.live-badge{margin-bottom:8px}
+
+.features{
+margin-top:11px;
+margin-bottom:12px;
+}
+
+.feature{padding:7px 2px}
+
+.cta-label{margin-bottom:8px}
+
+.join-btn{min-height:49px}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background" id="particles"></div>
+
+<main class="page">
+
+<div class="top-brand">
+THE OFFICIAL COMMUNITY
+</div>
+
+<!-- LOGO -->
+
+<div class="logo-section">
+
+<div class="orbit one"></div>
+<div class="orbit two"></div>
+<div class="logo-glow"></div>
+
+<div class="logo-frame">
+<img src="logo.png" alt="RP The Brand Logo">
+</div>
+
+</div>
+
+<!-- BADGE -->
+
+<div class="live-badge">
+<span class="live-dot"></span>
+CRICKET TRADING COMMUNITY
+</div>
+
+<!-- BRAND NAME -->
+
+<div class="heading">
+
+<h1>
+RP THE
+<span>BRAND</span>
+</h1>
+
+<div class="divider">
+<div class="diamond"></div>
+</div>
+
+<p class="subtitle">
+CRICKET INSIGHTS • MATCH ANALYSIS
+</p>
+
+</div>
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature">
+<div class="feature-icon">✦</div>
+<div class="feature-text">MATCH INSIGHTS</div>
+</div>
+
+<div class="feature">
+<div class="feature-icon">◈</div>
+<div class="feature-text">CRICKET TRADING</div>
+</div>
+
+<div class="feature">
+<div class="feature-icon">✧</div>
+<div class="feature-text">SESSION UPDATES</div>
+</div>
+
+</div>
+
+<!-- JOIN BUTTON -->
+
+<div class="cta-area">
+
+<p class="cta-label">
+YOUR NEXT CRICKET COMMUNITY AWAITS
+</p>
+
+<button
+class="join-btn"
+type="button"
+onclick="window.open('https://t.me/+JUgv4ri3Nnw2NzJl','_blank')">
+UNLOCK YOUR ACCESS ↗
+</button>
+
+<p class="cta-note">
+Enter The Official RP The Brand Community
+</p>
+
+</div>
+
+<div class="footer">
+RP THE BRAND <span>✦</span> CRICKET COMMUNITY
+</div>
+
+</main>
+
+<script>
+
+/* PREMIUM FLOATING GOLD PARTICLES */
+
+const container=document.getElementById("particles");
+
+for(let i=0;i<23;i++){
+
+const particle=document.createElement("div");
+
+particle.className="particle";
+
+particle.style.left=Math.random()*100+"%";
+
+particle.style.animationDelay=Math.random()*10+"s";
+
+particle.style.animationDuration=(7+Math.random()*7)+"s";
+
+particle.style.width=(1+Math.random()*2)+"px";
+
+particle.style.height=particle.style.width;
+
+container.appendChild(particle);
+
+}
+
+</script>
+
+</body>
+</html>
